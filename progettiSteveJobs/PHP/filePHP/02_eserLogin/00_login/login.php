@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             <button type="submit">Accedi</button>
         </div>
     </form>
-
+ciao
     <p style="margin-top: 20px; color: #666; font-size: 14px;">
         <em>Credenziali di test: email@gmail.com / 12345</em>
     </p>

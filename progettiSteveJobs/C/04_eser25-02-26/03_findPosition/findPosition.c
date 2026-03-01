@@ -21,8 +21,8 @@ void findPositions(int array[], int length, int find) {
 int main(void) {
     int votes[] = {2, 3, 4, 5, 6, 7, 4, 3, 2, 8};
     int arrayLength = sizeof(votes) / sizeof(votes[0]);
+
     int numberBySearch = 8;
-    
     findPositions(votes, arrayLength, numberBySearch);
     
     numberBySearch = 4;
