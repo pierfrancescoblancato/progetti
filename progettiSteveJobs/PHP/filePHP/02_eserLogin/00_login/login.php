@@ -40,8 +40,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
-    <link rel="stylesheet" href="styles.css" defer>
-    <script href="script.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 
 <body>
@@ -63,7 +63,11 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         <div class="passwordDiv">
             <label for="password">Password:</label>
             <input type="password" name="password" placeholder="Inserisci la password">
-            <label for="show-hidden-password">Mostra/Nascondi</label><input type="checkbox" name="show-hidden-password">
+            <div class="show-hidden">
+                <label for="show-hidden-password">Mostra/Nascondi</label>
+                <input type="checkbox" name="show-hidden-password">
+            </div>
+            
         </div>
 
         <div class="submitDiv">
@@ -74,5 +78,4 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         <em>Credenziali di test: email@gmail.com / 12345</em>
     </p>
 </body>
-
 </html>
