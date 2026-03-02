@@ -7,27 +7,31 @@ $messaggio = "";
 $email = htmlspecialchars(strip_tags(trim($_POST['email'] ?? '')));
 $password = htmlspecialchars(strip_tags(trim($_POST['password'] ?? '')));
 
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
+if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
-    if (($email !== "" && $password !== "")) {
+    if (empty($email) && empty($password)) {
+        $messaggio = "Compila tutti i campi!";
+    } elseif (empty($email)) {
+        $messaggio = "Hai dimenticato di compilare il campo: Email!";
+    } elseif (empty($password)) {
+        $messaggio = "Hai dimenticato di compilare il campo: Password!";
+    }
 
-        if (EMAIL_CORRETTA == $email && PASSWORD_CORRETTA == $password) {
+    elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $messaggio = "L'email non è valida!";
+    }
+
+    else {
+        if ($email === EMAIL_CORRETTA && $password === PASSWORD_CORRETTA) {
             header("Location: dashboard.php?email=" . urlencode($email));
             exit();
         } else {
             $messaggio = "Credenziali errate!";
         }
-
-    } else {
-        if (empty($email) && empty($password))
-            $messaggio = "Compila tutti i campi!";
-        if (empty($email))
-            $messaggio = "Hai dimenticato di compilare il campo: Email!";
-        if (empty($password))
-            $messaggio = "Hai dimenticato di compilare il campo: Password!!";
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="it">
@@ -66,7 +70,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             <button type="submit">Accedi</button>
         </div>
     </form>
-ciao
     <p style="margin-top: 20px; color: #666; font-size: 14px;">
         <em>Credenziali di test: email@gmail.com / 12345</em>
     </p>
