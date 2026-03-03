@@ -15,13 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         $messaggio = "Hai dimenticato di compilare il campo: Email!";
     } elseif (empty($password)) {
         $messaggio = "Hai dimenticato di compilare il campo: Password!";
-    }
-
-    elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $messaggio = "L'email non è valida!";
-    }
-
-    else {
+    } else {
         if ($email === EMAIL_CORRETTA && $password === PASSWORD_CORRETTA) {
             header("Location: dashboard.php?email=" . urlencode($email));
             exit();
@@ -62,20 +58,18 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
         <div class="passwordDiv">
             <label for="password">Password:</label>
-            <input type="password" name="password" placeholder="Inserisci la password">
-            <div class="show-hidden">
-                <label for="show-hidden-password">Mostra/Nascondi</label>
-                <input type="checkbox" name="show-hidden-password">
-            </div>
-            
+            <input type="password" id="password" name="password" placeholder="Inserisci la password">
+            <button type="button" class="toggle-password"></button>
         </div>
+
 
         <div class="submitDiv">
             <button type="submit">Accedi</button>
         </div>
     </form>
-    <p style="margin-top: 20px; color: #666; font-size: 14px;">
+    <p>
         <em>Credenziali di test: email@gmail.com / 12345</em>
     </p>
 </body>
+
 </html>
