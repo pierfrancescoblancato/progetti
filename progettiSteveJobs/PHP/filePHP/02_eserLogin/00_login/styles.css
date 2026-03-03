@@ -80,10 +80,6 @@ input[type='password']:focus {
   cursor: pointer;
 }
 
-.toggle-password:checked {
-  background-image: url("assets/hidden.svg");
-}
-
 .toggle-password {
   font-weight: normal;
   margin: 0;
