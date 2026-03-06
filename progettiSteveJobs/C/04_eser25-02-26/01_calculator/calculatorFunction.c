@@ -98,7 +98,7 @@ void validateChoice(int choice) {
 void loopChoice() {
     int choice;
     do {
-        choice = readInt("Enter one choice: ");
+        choice = readFloat("Enter one choice: ");
         validateChoice(choice);
     } while (choice != 0);
 }
