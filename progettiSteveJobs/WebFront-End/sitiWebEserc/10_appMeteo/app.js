@@ -9,21 +9,21 @@ async function mostraMeteo() {
     if (cityEnter === "") {
         console.log("Campo vuoto");
     } else {
-        const dataClean = {
-            name: cityEnter,
-            main: {
-                temp: 21.5
-            },
-            weather: [
-                { description: "cielo sereno" }
-            ]
-        };
-        // const url = "https://api.openweathermap.org/data/2.5/weather?q=${cityEnter}&appid=2f4c89c3a592289c8c4880846f14d054&units=metric";
+        // const dataClean = {
+        //     name: cityEnter,
+        //     main: {
+        //         temp: 21.5
+        //     },
+        //     weather: [
+        //         { description: "cielo sereno" }
+        //     ]
+        // };
+        const url = "";
         
-        // const jsonResponse = await fetch(url);
-        // const dataClean = await jsonResponse.json();
+        const jsonResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityEnter}&appid=2f4c89c3a592289c8c4880846f14d054&units=metric`);
+        const dataClean = await jsonResponse.json();
         
-        // console.log(dataClean);
+        console.log(dataClean);
 
         // ORA: passiamo i dati al DIV 'result'
         // Proviamo a scrivere solo il nome della città per ora
