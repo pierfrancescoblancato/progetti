@@ -1,99 +1,109 @@
 #include <stdio.h>
 
-void printMenu(){
+void printMenu() {
     printf("----MENU----\n");
-    printf("\n 1. sum \n");
-    printf("\n 2. difference \n");
-    printf("\n 3. multiplication \n");
-    printf("\n 4. division \n");
-    printf("\n 0. exit \n");
+    printf(" 1. sum\n");
+    printf(" 2. difference\n");
+    printf(" 3. multiplication\n");
+    printf(" 4. division\n");
+    printf(" 5. rest of division\n");
+    printf(" 0. exit\n");
 }
 
-int readChoice(char prompt[]){
-    int choice;
-    printf("\n\n %s: ", prompt);
-    scanf("%d", &choice);
-    return choice;
-}
+int readInt(const char prompt[]) {
+    int value;
+    while (1) {
+        printf("%s", prompt);
 
-
-void loopChoice() {
-
-    int choice;
-    do {
-        choice = readChoice("Enter one choice");
-        if(choice < 0 || choice > 4) {
-            validateChoice(choice);
-        } else {
-            validateChoice(choice);
+        if (scanf("%d", &value) == 1) {
+            return value;
         }
-    } while (choice != 0);
 
-}
-
-int sum(int a, int b){
-     return a + b;
-}
-
-int diff(int a, int b){
-    return a - b;
-}
-
-int molt(int a, int b){
-    return a * b;
-}
-
-float div(int a, int b){
-    if(b != 0){
-        return (float)a / b;
-    }
-    else{
-        printf("Error: the denominator not is 0");
-        return 0.0;
+        int c;
+        while ((c = getchar()) != '\n' && c != EOF) {}
+        printf("Input not valid. Try again.\n");
     }
 }
 
-void validateChoice(int value){
+float readFloat(const char prompt[]) {
+    float value;
+    while (1) {
+        printf("%s", prompt);
 
-    int value1 = readChoice("Enter a value1");
-    int value2 = readChoice("Enter a value2");
+        if (scanf("%f", &value) == 1) {
+            return value;
+        }
 
-    switch(value){
+        int c;
+        while ((c = getchar()) != '\n' && c != EOF) {}
+        printf("Input not valid. Insert a real number.\n");
+    }
+}
 
+float sum(float a, float b) { return a + b; }
+float diff(float a, float b) { return a - b; }
+float molt(float a, float b) { return a * b; }
+
+float divide(float a, float b) {
+    if (b == 0) {
+        printf("Error: division by zero.\n");
+        return 0.0f;
+    }
+    return a / b;
+}
+
+int restDivision(float a, float b) {
+    if (b == 0) {
+        printf("Error: division by zero.\n");
+        return 0;
+    }
+    return (int)a % (int)b;
+}
+
+void validateChoice(int choice) {
+    if (choice == 0) {
+        printf("Exit.\n");
+        return;
+    }
+
+    float v1 = readFloat("Enter value1: ");
+    float v2 = readFloat("Enter value2: ");
+
+    switch (choice) {
         case 1:
-            printf("You have chosen 1. sum \n");
-            int sumValue =  sum(value1,value2);
-            printf("The sum is %d: ",sumValue);
+            printf("Sum = %.2f\n", sum(v1, v2));
             break;
 
         case 2:
-            printf("You have chosen 2. difference \n");
-            int diffValue =  diff(value1,value2);
-            printf("The differenze is %d: ",diffValue);
+            printf("Difference = %.2f\n", diff(v1, v2));
             break;
-            
+
         case 3:
-            printf("You have chosen 3. moltiplication \n");
-            int moltValue =  molt(value1,value2);
-            printf("The moltiplication is %d: ",moltValue);
+            printf("Multiplication = %.2f\n", molt(v1, v2));
             break;
 
         case 4:
-            printf("You have chosen 4. division \n");
-            int divValue =  div(value1,value2);
-            printf("the division is %d: ", divValue);
+            printf("Division = %.2f\n", divide(v1, v2));
             break;
 
-        case 0:
-            printf("You have chosen 0. exit \n");
+        case 5:
+            printf("Rest of division = %d\n", restDivision(v1, v2));
             break;
 
-        default:     
-            printf("\nYou have chosen an invalid choice \n");          
+        default:
+            printf("Invalid choice.\n");
     }
 }
 
-int main(void){
+void loopChoice() {
+    int choice;
+    do {
+        choice = readInt("Enter one choice: ");
+        validateChoice(choice);
+    } while (choice != 0);
+}
+
+int main(void) {
     printMenu();
     loopChoice();
     return 0;
