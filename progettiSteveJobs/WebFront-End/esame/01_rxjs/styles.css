@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(0, 0, 0);
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 25px;
+
+    background-color: #c2185b;
+    z-index: 999;
+}
+
+.logo {
+    width: 45px;
+    height: 45px;
+    background-color: #ffffff;
+    margin-left: 25px;
+    border-radius: 50%;
+}
+
+.title {
+    color: #fff;
+    font-size: 24px;
+    margin: 0;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #00bcd4;
+}
+
+.buttons-container {
+    margin-top: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.buttons-container button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    background-color: #ffffff;
+
+    color: #000000;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.buttons-container button:hover {
+    background-color: #c2185b;
+    color: rgb(255, 255, 255);
+    transform: scale(1.0);
+}
+
+
+.items-container {
+    position: absolute;
+    top: 150px;
+
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    height: 180px;
+    width: 160px;
+    padding: 15px 20px;
+
+    background-color: #ffffff;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+
+}
+
+.item:hover {
+    transform: scale(1.0); 
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15); 
+    border-color: #ccc;
+}
+
+.photo {
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background-color: #c2185b;
+    border: 1px solid #ddd;
+}
+.color-1 { background-color: #FFCDD2; }
+.color-2 { background-color: #F8BBD0; }
+.color-3 { background-color: #E1BEE7; }
+.color-4 { background-color: #D1C4E9; }
+.color-5 { background-color: #C5CAE9; }
+.color-6 { background-color: #BBDEFB; }
+.color-7 { background-color: #B2EBF2; }
