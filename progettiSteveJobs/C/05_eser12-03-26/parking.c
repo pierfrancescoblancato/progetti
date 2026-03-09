@@ -1,39 +1,48 @@
 #include <stdio.h>
 
-int readMinutes( char prompt[]) {
+int readMinutes(char prompt[]) {
     int m;
     printf("%s", prompt);
     scanf("%d", &m);
     return m;
 }
 
-int calculatCost(int minutes) {
-    if (minutes < 0) {
-        return -1;
-    }
+int calculateExtraHours(int minutes) {
+    int extra = minutes - 120;
+    return (extra + 59) / 60;
+}
 
+int calculateCost(int minutes) {
     if (minutes <= 30) {
         return 1;
-    }
-    else if (minutes <= 120) {
+    } else if (minutes <= 120) {
         return 3;
-    }
-    else {
-        int extra = minutes - 120;
-        int extra_hours = (extra + 59) / 60;
-        return 3 + extra_hours;
+    } else {
+        return 3 + calculateExtraHours(minutes);
     }
 }
+int isValid(int minutes) {
+    return minutes >= 0;
+}
+void printError() {
+    printf("Error: the minuts not be negative.\n");
+}
+
+void printResult(int cost) {
+    printf("total import: %d €\n", cost);
+}
+
+
 
 int main() {
     int minutes = readMinutes("Enter the parking time in minutes: ");
-    int cost = calculatCost(minutes);
 
-    if (cost == -1) {
-        printf("Error: minutes cannot be negative.\n");
-        return 0;
+    if (!isValid(minutes)) {
+        printError();
+        return 1;
     }
 
-    printf("Total cost: %d euros\n", cost);
+    int cost = calculateCost(minutes);
+    printResult(cost);
     return 0;
 }
