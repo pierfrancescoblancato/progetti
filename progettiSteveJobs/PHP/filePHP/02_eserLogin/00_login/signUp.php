@@ -22,7 +22,7 @@ session_start();
         <?php unset($_SESSION['messageError']); ?>
     <?php endif; ?>
 
-    <form class="container" action="api/apiSignIn.php" method="POST">
+    <form class="container" action="api/apiSignUp.php" method="POST">
         <div class="emailDiv">
             <label for="email">Email:</label>
             <input type="email" name="email" placeholder="Inserisci l'email. ex: utente@esempio.com">
@@ -36,8 +36,7 @@ session_start();
         </div>
 
         <div class="other">
-            <a class="sign-in" href="signIn.php">Registrati ora!</a><br>
-            <a class="password-forget" href="passwordForget.php">Password Dimenticata? clicca qui!</a>
+            <a class="login" href="logIn.php">have you an account?</a><br>
         </div>
 
         <div class="submitDiv">
